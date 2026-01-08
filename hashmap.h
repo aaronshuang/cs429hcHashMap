@@ -1,8 +1,19 @@
 #ifndef HASHMAP_H
 #define HASHMAP_H
 
+#include <stddef.h>
+
+typedef struct IntNode {
+	int key;
+	int value;
+	struct IntNode *next;
+} IntNode;
+
 struct IntToIntHashMap{
 	//TODO: fill this in
+	IntNode **buckets;
+	size_t size;
+	size_t capacity;
 };
 
 struct IntToIntHashMap* createIntToIntHashMap(int numBuckets);
@@ -15,9 +26,17 @@ void intToIntHashMapRemove(struct IntToIntHashMap* hmap, int key);
 
 void destroyIntToIntHashMap(struct IntToIntHashMap* hmap);
 
+typedef struct StrNode {
+	char* key;
+	int value;
+	struct StrNode *next;
+} StrNode;
 
 struct StrToIntHashMap{
 	//TODO: fill this in
+	StrNode **buckets;
+	size_t size;
+	size_t capacity;
 };
 
 struct StrToIntHashMap* createStrToIntHashMap(int numBuckets);
